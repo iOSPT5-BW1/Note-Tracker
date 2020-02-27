@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesTableViewCell" rowHeight="103" id="Eq3-be-gBB" customClass="NotesTableViewCell" customModule="CreativeNotes" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesCell" rowHeight="103" id="Eq3-be-gBB" customClass="NotesTableViewCell" customModule="CreativeNotes" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Eq3-be-gBB" id="bih-nB-HvH">
@@ -109,7 +109,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eKr-4M-X3d">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter Text Here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eKr-4M-X3d">
                                 <rect key="frame" x="8" y="148" width="398" height="706"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -117,7 +117,6 @@
                                     <constraint firstAttribute="width" secondItem="eKr-4M-X3d" secondAttribute="height" multiplier="199:353" id="OKp-os-smq"/>
                                     <constraint firstAttribute="width" constant="398" id="vio-6n-qrd"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -133,9 +132,20 @@
                         <viewLayoutGuide key="safeArea" id="L7x-F5-sRH"/>
                     </view>
                     <navigationItem key="navigationItem" title="Note Title" id="J0o-GS-I9z">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1tQ-ve-0es"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="WDw-Qg-TdM"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1tQ-ve-0es">
+                            <connections>
+                                <action selector="cancelTapped:" destination="qqF-Gl-6Kl" id="zgj-wX-pP9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="WDw-Qg-TdM">
+                            <connections>
+                                <action selector="saveTapped:" destination="qqF-Gl-6Kl" id="9Xt-Qc-vrG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="content" destination="eKr-4M-X3d" id="1YJ-ut-kuF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTP-Xg-XZK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

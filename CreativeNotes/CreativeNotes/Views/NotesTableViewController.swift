@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NotesTableViewController: UITableViewController {
+class NotesTableViewController: UITableViewController, AddNoteDelegate {
     
     @IBOutlet weak var notesTable: UITableView!
     
@@ -16,10 +16,12 @@ class NotesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.notesTable.delegate = self
+        self.notesTable.dataSource = self
     }
     
-    func addNote(note: note) {
-        notes.append(note)
+    func addNote(title: String, content: String) {
+        notes.append(note(title: title, content: content))
         notesTable.reloadData()
     }
 }
@@ -39,14 +41,14 @@ extension NotesTableViewController {
         return cell
     }
     
-    /*
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addNoteSegue" {
             if let addNoteViewController = segue.destination as? AddNoteViewController {
-                //addMovieViewController.delegate = self
+                addNoteViewController.delegate = self
             }
         }
-    } */
+    }
 
     // Delete button
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

@@ -21,3 +21,7 @@ struct note: Encodable, Decodable {
         self.isPinned = isPinned
     }
 }
+
+protocol AddNoteDelegate {
+    func addNote(title: String, content: String)
+}
