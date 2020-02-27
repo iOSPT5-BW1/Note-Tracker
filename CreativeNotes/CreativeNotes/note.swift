@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct note {
+struct note: Encodable, Decodable {
     var title: String
     var content: String? // Notes will always be initialized without content
     var inTrash: Bool
