@@ -15,6 +15,9 @@
 		138ABF0124075E1F00B8CC28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138ABEFF24075E1F00B8CC28 /* LaunchScreen.storyboard */; };
 		138ABF092407698C00B8CC28 /* note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138ABF082407698C00B8CC28 /* note.swift */; };
 		138ABF0B24076A9800B8CC28 /* notesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138ABF0A24076A9800B8CC28 /* notesController.swift */; };
+		138ABF0F240771DB00B8CC28 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138ABF0E240771DB00B8CC28 /* NotesTableViewController.swift */; };
+		138ABF12240775DF00B8CC28 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138ABF11240775DF00B8CC28 /* NotesTableViewCell.swift */; };
+		138ABF1424077AB500B8CC28 /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138ABF1324077AB500B8CC28 /* AddNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		138ABF0224075E1F00B8CC28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		138ABF082407698C00B8CC28 /* note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = note.swift; sourceTree = "<group>"; };
 		138ABF0A24076A9800B8CC28 /* notesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notesController.swift; sourceTree = "<group>"; };
+		138ABF0E240771DB00B8CC28 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
+		138ABF11240775DF00B8CC28 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		138ABF1324077AB500B8CC28 /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,10 +73,37 @@
 				138ABEFD24075E1F00B8CC28 /* Assets.xcassets */,
 				138ABEFF24075E1F00B8CC28 /* LaunchScreen.storyboard */,
 				138ABF0224075E1F00B8CC28 /* Info.plist */,
-				138ABF082407698C00B8CC28 /* note.swift */,
-				138ABF0A24076A9800B8CC28 /* notesController.swift */,
+				138ABF10240771E300B8CC28 /* Views */,
+				138ABF0C2407706800B8CC28 /* Models */,
+				138ABF0D2407706F00B8CC28 /* Controllers */,
 			);
 			path = CreativeNotes;
+			sourceTree = "<group>";
+		};
+		138ABF0C2407706800B8CC28 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				138ABF082407698C00B8CC28 /* note.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		138ABF0D2407706F00B8CC28 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				138ABF0A24076A9800B8CC28 /* notesController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		138ABF10240771E300B8CC28 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				138ABF0E240771DB00B8CC28 /* NotesTableViewController.swift */,
+				138ABF1324077AB500B8CC28 /* AddNoteViewController.swift */,
+				138ABF11240775DF00B8CC28 /* NotesTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +181,10 @@
 				138ABEF524075E1A00B8CC28 /* AppDelegate.swift in Sources */,
 				138ABF0B24076A9800B8CC28 /* notesController.swift in Sources */,
 				138ABEF724075E1A00B8CC28 /* SceneDelegate.swift in Sources */,
+				138ABF1424077AB500B8CC28 /* AddNoteViewController.swift in Sources */,
 				138ABF092407698C00B8CC28 /* note.swift in Sources */,
+				138ABF12240775DF00B8CC28 /* NotesTableViewCell.swift in Sources */,
+				138ABF0F240771DB00B8CC28 /* NotesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,13 +10,13 @@
         <!--CreativeNotes-->
         <scene sceneID="kI1-WL-d4M">
             <objects>
-                <tableViewController id="CGH-9s-RYg" sceneMemberID="viewController">
+                <tableViewController id="CGH-9s-RYg" customClass="NotesTableViewController" customModule="CreativeNotes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0vh-6U-PBP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesTableViewCell" rowHeight="103" id="Eq3-be-gBB">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesTableViewCell" rowHeight="103" id="Eq3-be-gBB" customClass="NotesTableViewCell" customModule="CreativeNotes" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Eq3-be-gBB" id="bih-nB-HvH">
@@ -57,6 +57,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="contentPreview" destination="GBo-gk-BvY" id="gUZ-fw-z0z"/>
+                                    <outlet property="title" destination="Xb8-zo-w8y" id="5Mz-0I-A8o"/>
                                     <segue destination="qqF-Gl-6Kl" kind="show" identifier="editNoteSegue" id="bMb-AS-oGV"/>
                                 </connections>
                             </tableViewCell>
@@ -73,6 +75,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="notesTable" destination="0vh-6U-PBP" id="NWo-26-7so"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDm-0C-k4W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,7 +104,7 @@
         <!--Note Title-->
         <scene sceneID="iQ5-Ku-xhT">
             <objects>
-                <viewController id="qqF-Gl-6Kl" sceneMemberID="viewController">
+                <viewController id="qqF-Gl-6Kl" customClass="AddNoteViewController" customModule="CreativeNotes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q5p-RQ-qVm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
