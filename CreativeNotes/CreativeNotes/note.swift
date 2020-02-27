@@ -10,5 +10,14 @@ import Foundation
 
 struct note {
     var title: String
-    var content: String? // optional because we can have notes without any content
+    var content: String? // Notes will always be initialized without content
+    var inTrash: Bool
+    var isPinned: Bool
+    
+    init(title: String, content: String?, inTrash: Bool = false, isPinned: Bool = false) {
+        self.title = title
+        self.content = content
+        self.inTrash = inTrash   // Note will always started with these both false
+        self.isPinned = isPinned
+    }
 }
