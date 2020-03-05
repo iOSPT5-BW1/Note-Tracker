@@ -15,6 +15,9 @@ class ThemeSelectionViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func darkThemeTapped(_ sender: Any) {
+        Theme.current = DarkTheme()
+    }
     
 
     /*

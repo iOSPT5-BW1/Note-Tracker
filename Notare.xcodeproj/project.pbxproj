@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1385C2952411B804002FAA2C /* ThemeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1385C2942411B804002FAA2C /* ThemeSelectionViewController.swift */; };
 		13E26AD3241088A800D2BC08 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E26AD2241088A800D2BC08 /* ThemeProtocol.swift */; };
 		13E26AD52410896300D2BC08 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E26AD42410896300D2BC08 /* DarkTheme.swift */; };
 		13E26AD724108B5300D2BC08 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E26AD624108B5300D2BC08 /* Theme.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1385C2942411B804002FAA2C /* ThemeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectionViewController.swift; sourceTree = "<group>"; };
 		13E26AD2241088A800D2BC08 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
 		13E26AD42410896300D2BC08 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
 		13E26AD624108B5300D2BC08 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				1FB17194240DE8DF00F8EC0F /* Notes.swift */,
 				1FC510BC240D8C54006BD691 /* ViewController.swift */,
 				1FB1718F240DC53B00F8EC0F /* DetailViewController.swift */,
+				1385C2942411B804002FAA2C /* ThemeSelectionViewController.swift */,
 				1FC510BE240D8C54006BD691 /* Main.storyboard */,
 				1FC510C6240D8C58006BD691 /* Info.plist */,
 				13E26AD2241088A800D2BC08 /* ThemeProtocol.swift */,
@@ -185,6 +188,7 @@
 				1FB17190240DC53B00F8EC0F /* DetailViewController.swift in Sources */,
 				13E26AD52410896300D2BC08 /* DarkTheme.swift in Sources */,
 				1FB17195240DE8DF00F8EC0F /* Notes.swift in Sources */,
+				1385C2952411B804002FAA2C /* ThemeSelectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

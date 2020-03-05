@@ -197,10 +197,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let detailView: DetailViewController = segue.destination as! DetailViewController
-        selectedRow = tableView.indexPathForSelectedRow!.row // always making sure you have a selected row before transistion to detail view controller screen
-        detailView.masterView = self
-        detailView.setText(t: data[selectedRow]) // sending selected cell text/data to the detail view
+        if segue.identifier == "detailNotes" {
+            let detailView: DetailViewController = segue.destination as! DetailViewController
+            selectedRow = tableView.indexPathForSelectedRow!.row // always making sure you have a selected row before transistion to detail view controller screen
+            detailView.masterView = self
+            detailView.setText(t: data[selectedRow]) // sending selected cell text/data to the detail view
+        }
+        if segue.identifier == "themeSelection" {
+            //let controller: ThemeSelectionViewController = segue.destination as! ThemeSelectionViewController
+        }
     }
     
     // saving the notes using persistence
