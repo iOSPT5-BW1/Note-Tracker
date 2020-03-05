@@ -21,6 +21,8 @@ class DetailViewController: UIViewController {
         detailTextView.text = text
         self.navigationItem.largeTitleDisplayMode = .never
 
+        // Theme inclusion
+        detailTextView.backgroundColor = Theme.current.backgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
