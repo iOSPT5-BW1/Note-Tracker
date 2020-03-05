@@ -8,7 +8,7 @@
 import UIKit
 
 class DarkTheme: ThemeProtocol {
-    var fontColor: UIColor = UIColor.lightGray
-    var headerColor: UIColor = UIColor.darkGray
-    var backgroundColor: UIColor = UIColor.darkGray
+    var fontColor: UIColor = UIColor.white
+    var buttonColor: UIColor = UIColor.systemGreen
+    var backgroundColor: UIColor = UIColor.black
 }

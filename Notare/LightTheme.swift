@@ -10,6 +10,6 @@ import UIKit
 
 class LightTheme: ThemeProtocol {
     var fontColor: UIColor = UIColor.black
-    var headerColor: UIColor = UIColor.white
+    var buttonColor: UIColor = UIColor.systemBlue
     var backgroundColor: UIColor = UIColor.white
 }

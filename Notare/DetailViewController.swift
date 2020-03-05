@@ -9,7 +9,11 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    @IBOutlet var detailView: UIView!
     @IBOutlet weak var detailTextView: UITextView!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     
     var text: String = ""
     
@@ -23,6 +27,10 @@ class DetailViewController: UIViewController {
 
         // Theme inclusion
         detailTextView.backgroundColor = Theme.current.backgroundColor
+        detailTextView.textColor = Theme.current.fontColor
+        cancelButton.tintColor = Theme.current.buttonColor
+        saveButton.tintColor = Theme.current.buttonColor
+        detailView.backgroundColor = Theme.current.backgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {

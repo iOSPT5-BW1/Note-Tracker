@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noteCell" id="wuY-c7-EaX" customClass="TableViewCell" customModule="Notare">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noteCell" id="wuY-c7-EaX" customClass="noteTableViewCell" customModule="Notare">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wuY-c7-EaX" id="oLd-M5-auU">
@@ -67,13 +67,22 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addNoteButton" destination="dae-gm-ZWN" id="aUz-WH-zdF"/>
+                        <outlet property="cameraButton" destination="o2A-3A-RbO" id="pZE-Ht-yit"/>
+                        <outlet property="editButton" destination="uHk-pQ-7ji" id="7Ed-RJ-LOO"/>
+                        <outlet property="fileButton" destination="qgA-3d-gXc" id="pQy-jm-MZw"/>
+                        <outlet property="imageButton" destination="qWO-ZD-K1d" id="0dJ-G3-gkQ"/>
+                        <outlet property="microphoneButton" destination="2Y3-VV-FqM" id="Qf1-4l-ofo"/>
+                        <outlet property="shareButton" destination="zYC-A0-aH2" id="lYR-Cm-guG"/>
                         <outlet property="tableView" destination="Jcr-Ec-LPg" id="4Iv-JF-nEP"/>
+                        <outlet property="toolbar" destination="dFE-IB-FuJ" id="fP9-oV-Kem"/>
+                        <outlet property="viewTest" destination="8bC-Xf-vdC" id="r72-XY-Ren"/>
                         <segue destination="0Pm-Vs-uM7" kind="show" identifier="detailNotes" id="GOb-mJ-O4h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="115.84821428571428"/>
+            <point key="canvasLocation" x="1062" y="116"/>
         </scene>
         <!--Note-->
         <scene sceneID="ERf-7t-JKB">
@@ -88,7 +97,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -114,12 +123,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="ODC-R2-0eq" id="909-LY-wTi"/>
                         <outlet property="detailTextView" destination="xfO-gC-G3j" id="aMK-TJ-t1S"/>
+                        <outlet property="detailView" destination="klm-eP-ler" id="ezY-sy-Xdx"/>
+                        <outlet property="saveButton" destination="060-dW-IX3" id="7D8-V7-13g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCJ-3w-lTd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1918.840579710145" y="115.84821428571428"/>
+            <point key="canvasLocation" x="1951" y="116"/>
         </scene>
         <!--Camera Use View Controller-->
         <scene sceneID="34h-JS-aoX">

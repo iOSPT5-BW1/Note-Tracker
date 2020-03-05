@@ -15,6 +15,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // making table view a property inside view controller 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet var viewTest: UIView!
+    
+    @IBOutlet weak var toolbar: UIToolbar!
+    
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    
+    @IBOutlet weak var addNoteButton: UIBarButtonItem!
+
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
+    
+    @IBOutlet weak var imageButton: UIBarButtonItem!
+
+    @IBOutlet weak var microphoneButton: UIBarButtonItem!
+
+    @IBOutlet weak var fileButton: UIBarButtonItem!
+
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     // creating a new instance of the variable "data" in order to get a data source for table view
     var data: [String] = []
     
@@ -44,6 +61,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //setting the tableview as the data source
         tableView.delegate = self
         tableView.dataSource = self
+        
         self.title = "Notare"
         self.navigationItem.largeTitleDisplayMode = .always
         
@@ -67,6 +85,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Theme inclusion
         tableView.backgroundColor = Theme.current.backgroundColor
+        viewTest.backgroundColor = Theme.current.backgroundColor
+        toolbar.barTintColor = Theme.current.backgroundColor
+        toolbar.backgroundColor = Theme.current.backgroundColor
+        addNoteButton.tintColor = Theme.current.buttonColor
+        editButton.tintColor = Theme.current.buttonColor
+        cameraButton.tintColor = Theme.current.buttonColor
+        imageButton.tintColor = Theme.current.buttonColor
+        microphoneButton.tintColor = Theme.current.buttonColor
+        fileButton.tintColor = Theme.current.buttonColor
+        shareButton.tintColor = Theme.current.buttonColor
+        
+        // Change barStyle based on dark/light theme color
+        switch Theme.current.backgroundColor {
+        case UIColor.black, UIColor.darkGray, UIColor.gray:
+            navigationController?.navigationBar.barStyle = .black
+        default:
+            navigationController?.navigationBar.barStyle = .default
+        }
     }
     
     // ***********
@@ -131,6 +167,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath)
         cell.textLabel?.text = data[indexPath.row] //setting the text for the cell based on the text label property
 //        IndexPath contains the row and the section of the table view whose cell we are creating
+        
+        // Theme Inclusion
+        cell.backgroundColor = Theme.current.backgroundColor
+        cell.textLabel?.textColor = Theme.current.fontColor
         return cell
     }
     
