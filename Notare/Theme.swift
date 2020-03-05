@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+class Theme {
+    static var current: ThemeProtocol = DarkTheme()
+}

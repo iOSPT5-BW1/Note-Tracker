@@ -64,7 +64,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         navigationItem.searchController = searchController
         // closes the search bar when the user navigates to another view controller
         definesPresentationContext = true
-
+        
+        // Theme inclusion
+        tableView.backgroundColor = Theme.current.backgroundColor
     }
     
     // ***********

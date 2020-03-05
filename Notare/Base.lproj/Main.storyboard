@@ -68,6 +68,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Jcr-Ec-LPg" id="4Iv-JF-nEP"/>
+                        <outlet property="tableViewCell" destination="wuY-c7-EaX" id="hX4-Z5-5Od"/>
+                        <outlet property="textView" destination="oLd-M5-auU" id="YB4-gC-Aet"/>
                         <segue destination="0Pm-Vs-uM7" kind="show" identifier="detailNotes" id="GOb-mJ-O4h"/>
                     </connections>
                 </viewController>

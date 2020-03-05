@@ -2,8 +2,13 @@
 //  ThemeProtocol.swift
 //  Notare
 //
-//  Created by conner on 3/4/20.
-//  Copyright © 2020 Young. All rights reserved.
+//  Created by conner on 3/3/20.
+//  Copyright © 2020 conner. All rights reserved.
 //
+import UIKit
 
-import Foundation
+protocol ThemeProtocol {
+    var fontColor: UIColor { get }
+    var headerColor: UIColor { get }
+    var backgroundColor: UIColor { get }
+}
