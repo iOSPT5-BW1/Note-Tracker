@@ -82,8 +82,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         navigationItem.searchController = searchController
         // closes the search bar when the user navigates to another view controller
         definesPresentationContext = true
-        
-        // Theme inclusion
+    }
+    
+    // ***********
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if selectedRow == -1 {
+            return
+        }
+        data[selectedRow] = newRowText
+        if newRowText == "" {
+            data.remove(at: selectedRow)
+        }
+        tableView.reloadData()
+        saveNotes()
+        initTheme()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        initTheme()
+    }
+    
+    func initTheme() {
+        // Themeing
         tableView.backgroundColor = Theme.current.backgroundColor
         viewTest.backgroundColor = Theme.current.backgroundColor
         toolbar.barTintColor = Theme.current.backgroundColor
@@ -103,20 +124,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         default:
             navigationController?.navigationBar.barStyle = .default
         }
-    }
-    
-    // ***********
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if selectedRow == -1 {
-            return
-        }
-        data[selectedRow] = newRowText
-        if newRowText == "" {
-            data.remove(at: selectedRow)
-        }
-        tableView.reloadData()
-        saveNotes()
     }
     
     // ***********
@@ -237,7 +244,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
       filteredNotes = notes.filter { (note: Note) -> Bool in
         return note.name.lowercased().contains(searchText.lowercased())
       }
-
       tableView.reloadData()
     }
 
@@ -245,10 +251,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 extension ViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
-    // TODO
+    let searchBar = searchController.searchBar
+    filterContentForSearchText(searchBar.text!)
+    tableView.reloadData()
   }
-    
-    
-
 }
 

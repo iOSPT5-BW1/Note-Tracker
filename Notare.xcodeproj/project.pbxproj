@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1385C2952411B804002FAA2C /* ThemeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1385C2942411B804002FAA2C /* ThemeSelectionViewController.swift */; };
+		1385C2972411C2BD002FAA2C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1385C2962411C2BD002FAA2C /* UIViewExtension.swift */; };
+		1385C2992411C332002FAA2C /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1385C2982411C332002FAA2C /* UIBarButtonItemExtension.swift */; };
+		1385C29B2411C36E002FAA2C /* UIToolbarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1385C29A2411C36E002FAA2C /* UIToolbarExtension.swift */; };
+		1385C29D2411C37D002FAA2C /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1385C29C2411C37D002FAA2C /* UITableViewExtension.swift */; };
+		1385C29F2411C3CE002FAA2C /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1385C29E2411C3CE002FAA2C /* UITextViewExtension.swift */; };
+		1385C2A12411CA55002FAA2C /* fontColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1385C2A02411CA55002FAA2C /* fontColorButton.swift */; };
+		1385C2A52411CB97002FAA2C /* buttonColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1385C2A42411CB97002FAA2C /* buttonColorButton.swift */; };
+		1385C2A72411CC5D002FAA2C /* backgroundColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1385C2A62411CC5D002FAA2C /* backgroundColorButton.swift */; };
 		13E26AD3241088A800D2BC08 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E26AD2241088A800D2BC08 /* ThemeProtocol.swift */; };
 		13E26AD52410896300D2BC08 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E26AD42410896300D2BC08 /* DarkTheme.swift */; };
 		13E26AD724108B5300D2BC08 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E26AD624108B5300D2BC08 /* Theme.swift */; };
@@ -25,6 +33,14 @@
 
 /* Begin PBXFileReference section */
 		1385C2942411B804002FAA2C /* ThemeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectionViewController.swift; sourceTree = "<group>"; };
+		1385C2962411C2BD002FAA2C /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		1385C2982411C332002FAA2C /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
+		1385C29A2411C36E002FAA2C /* UIToolbarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolbarExtension.swift; sourceTree = "<group>"; };
+		1385C29C2411C37D002FAA2C /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		1385C29E2411C3CE002FAA2C /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
+		1385C2A02411CA55002FAA2C /* fontColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fontColorButton.swift; sourceTree = "<group>"; };
+		1385C2A42411CB97002FAA2C /* buttonColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonColorButton.swift; sourceTree = "<group>"; };
+		1385C2A62411CC5D002FAA2C /* backgroundColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = backgroundColorButton.swift; sourceTree = "<group>"; };
 		13E26AD2241088A800D2BC08 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
 		13E26AD42410896300D2BC08 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
 		13E26AD624108B5300D2BC08 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -57,6 +73,11 @@
 			isa = PBXGroup;
 			children = (
 				13E26ADB24108FAF00D2BC08 /* UIButtonExtension.swift */,
+				1385C2962411C2BD002FAA2C /* UIViewExtension.swift */,
+				1385C29E2411C3CE002FAA2C /* UITextViewExtension.swift */,
+				1385C29A2411C36E002FAA2C /* UIToolbarExtension.swift */,
+				1385C29C2411C37D002FAA2C /* UITableViewExtension.swift */,
+				1385C2982411C332002FAA2C /* UIBarButtonItemExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -95,6 +116,9 @@
 				1FB17194240DE8DF00F8EC0F /* Notes.swift */,
 				1FC510BC240D8C54006BD691 /* ViewController.swift */,
 				1FB1718F240DC53B00F8EC0F /* DetailViewController.swift */,
+				1385C2A02411CA55002FAA2C /* fontColorButton.swift */,
+				1385C2A42411CB97002FAA2C /* buttonColorButton.swift */,
+				1385C2A62411CC5D002FAA2C /* backgroundColorButton.swift */,
 				1385C2942411B804002FAA2C /* ThemeSelectionViewController.swift */,
 				1FC510BE240D8C54006BD691 /* Main.storyboard */,
 				1FC510C6240D8C58006BD691 /* Info.plist */,
@@ -178,17 +202,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1385C2A72411CC5D002FAA2C /* backgroundColorButton.swift in Sources */,
 				1FC510BD240D8C54006BD691 /* ViewController.swift in Sources */,
 				13E26ADC24108FAF00D2BC08 /* UIButtonExtension.swift in Sources */,
 				13E26AD724108B5300D2BC08 /* Theme.swift in Sources */,
+				1385C29B2411C36E002FAA2C /* UIToolbarExtension.swift in Sources */,
 				1FC510B9240D8C54006BD691 /* AppDelegate.swift in Sources */,
 				1FC510BB240D8C54006BD691 /* SceneDelegate.swift in Sources */,
+				1385C29D2411C37D002FAA2C /* UITableViewExtension.swift in Sources */,
 				13E26AD924108D9100D2BC08 /* LightTheme.swift in Sources */,
+				1385C2992411C332002FAA2C /* UIBarButtonItemExtension.swift in Sources */,
+				1385C2A52411CB97002FAA2C /* buttonColorButton.swift in Sources */,
+				1385C2972411C2BD002FAA2C /* UIViewExtension.swift in Sources */,
 				13E26AD3241088A800D2BC08 /* ThemeProtocol.swift in Sources */,
 				1FB17190240DC53B00F8EC0F /* DetailViewController.swift in Sources */,
 				13E26AD52410896300D2BC08 /* DarkTheme.swift in Sources */,
+				1385C2A12411CA55002FAA2C /* fontColorButton.swift in Sources */,
 				1FB17195240DE8DF00F8EC0F /* Notes.swift in Sources */,
 				1385C2952411B804002FAA2C /* ThemeSelectionViewController.swift in Sources */,
+				1385C29F2411C3CE002FAA2C /* UITextViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

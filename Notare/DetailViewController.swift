@@ -24,18 +24,25 @@ class DetailViewController: UIViewController {
 
         detailTextView.text = text
         self.navigationItem.largeTitleDisplayMode = .never
-
+        initTheme()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        detailTextView.becomeFirstResponder() // function to bring up software keyboard by automatically selecting text view
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        initTheme()
+    }
+    
+    func initTheme() {
         // Theme inclusion
         detailTextView.backgroundColor = Theme.current.backgroundColor
         detailTextView.textColor = Theme.current.fontColor
         cancelButton.tintColor = Theme.current.buttonColor
         saveButton.tintColor = Theme.current.buttonColor
         detailView.backgroundColor = Theme.current.backgroundColor
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        detailTextView.becomeFirstResponder() // function to bring up software keyboard by automatically selecting text view
     }
     
     func setText(t: String) {

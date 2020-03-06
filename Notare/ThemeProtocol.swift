@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ThemeProtocol {
-    var fontColor: UIColor { get }
-    var buttonColor: UIColor { get }
-    var backgroundColor: UIColor { get }
+    var fontColor: UIColor { get set }
+    var buttonColor: UIColor { get set }
+    var backgroundColor: UIColor { get set }
 }
