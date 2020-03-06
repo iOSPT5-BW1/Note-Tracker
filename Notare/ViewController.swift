@@ -135,7 +135,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // IBAction to call editNote method
     @IBAction func editNote(_ sender: UIBarButtonItem) {
-        
+        self.navigationItem.leftBarButtonItem = editButtonItem
     }
     
     
