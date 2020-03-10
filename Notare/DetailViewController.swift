@@ -13,7 +13,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailTextView: UITextView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
+    @IBAction func shareTapped(_ sender: UIBarButtonItem) {
+        let activityVC = UIActivityViewController(activityItems: [detailTextView.text ?? ""], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        self.present(activityVC, animated: true, completion: nil)
+    }
     
     var text: String = ""
     
@@ -24,62 +28,39 @@ class DetailViewController: UIViewController {
 
         detailTextView.text = text
         self.navigationItem.largeTitleDisplayMode = .never
-        initTheme()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         detailTextView.becomeFirstResponder() // function to bring up software keyboard by automatically selecting text view
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        initTheme()
-    }
-    
-    func initTheme() {
-        // Theme inclusion
-        detailTextView.backgroundColor = Theme.current.backgroundColor
-        detailTextView.textColor = Theme.current.fontColor
-        cancelButton.tintColor = Theme.current.buttonColor
-        saveButton.tintColor = Theme.current.buttonColor
-        detailView.backgroundColor = Theme.current.backgroundColor
+        setTheme()
     }
     
     func setText(t: String) {
         text = t
-        
-        // verifying to see if the view is loaded before we perform any modifications
-        
-        if isViewLoaded {
-            // modify text view after view has loaded
-            detailTextView.text = t
-        }
+        if isViewLoaded { detailTextView.text = t }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        masterView.newRowText = detailTextView.text
         detailTextView.resignFirstResponder()
-        
     }
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
+        masterView.newRowText = detailTextView.text
         viewWillDisappear(true)
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func setTheme() {
+        detailTextView.backgroundColor = Theme.current.backgroundColor
+        detailTextView.textColor = Theme.current.fontColor
+        cancelButton.tintColor = Theme.current.buttonColor
+        saveButton.tintColor = Theme.current.buttonColor
+        detailView.backgroundColor = Theme.current.backgroundColor
     }
-    */
-
 }
