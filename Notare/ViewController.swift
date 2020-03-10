@@ -8,200 +8,174 @@
 
 import UIKit
 
-
-// adding a protocol to get class to conform to UITableViewDataSource and UITableViewDelegate
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    // making table view a property inside view controller 
+    // MARK: Outlets
+    @IBOutlet weak var addNote: UIBarButtonItem!
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var paintButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var toolbar: UIToolbar!
     
-    // creating a new instance of the variable "data" in order to get a data source for table view
+    @IBOutlet weak var sortButton: UIBarButtonItem!
+    // MARK: Initial Variables
     var data: [String] = []
-    
     var notes: [Note] = []
-    
-    var selectedRow: Int = -1
-    var newRowText: String = ""
-    
-    
+    var selectedRow = -1
+    var newRowText = ""
+
+    // filteredNotes holds results for notes search
+    var filteredNotes: [Note] = []
     let searchController = UISearchController(searchResultsController: nil)
-
-    var filteredNotes: [Note] = [] // will hold the results of the user search
-    
-    var isSearchBarEmpty: Bool {
-        return searchController.searchBar.text?.isEmpty ?? true
-    }
-
-    
-    // to save data to a file - we have to start UserDefault saving code and modify it using File URL
+    var isSearchBarEmpty: Bool { return searchController.searchBar.text?.isEmpty ?? true }
     
     var fileURL: URL!
     
-    // runs when all user interface elements are loaded
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //setting the tableview as the data source
         tableView.delegate = self
         tableView.dataSource = self
-        self.title = "Notare"
-        self.navigationItem.largeTitleDisplayMode = .always
-        
-        // file URL
+        setFileURL()
+        loadNotes()
+        setupSearchController()
+        setTheme()
+    }
+    
+    // MARK: sortTapped
+    @IBAction func sortTapped(_ sender: Any) {
+        let sortedNotes = data.sorted(by: {$0 < $1})
+        data = sortedNotes
+        tableView.reloadData()
+    }
+    
+    // MARK: setFileURL
+    func setFileURL() {
         let baseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         fileURL = baseURL.appendingPathComponent("notes.txt")
-        
-        loadNotes() // calls the load notes function from persistence when loading/opening up app
-        
-        
-        
-        // informs the search controller of any text changes within the UI search bar
+    }
+    // MARK: loadNotes
+    func loadNotes() {
+        if let loadedNotes: [String] = NSArray(contentsOf: fileURL) as? [String] {
+            data = loadedNotes
+            tableView.reloadData()
+        }
+    }
+    // MARK: Search Functionality
+    func setupSearchController() {
         searchController.searchResultsUpdater = self
-        // the current view will show the results and not obscure view
         searchController.obscuresBackgroundDuringPresentation = false
-        // placeholder text
         searchController.searchBar.placeholder = "Search Notes"
         navigationItem.searchController = searchController
-        // closes the search bar when the user navigates to another view controller
         definesPresentationContext = true
-
     }
-    
-    // ***********
+
+    func filterContentForSearchText(_ searchText: String, category: Note.Category? = nil) {
+      filteredNotes = notes.filter { (note: Note) -> Bool in
+        return note.name.lowercased().contains(searchText.lowercased())
+      }
+      tableView.reloadData()
+    }}
+
+    extension ViewController: UISearchResultsUpdating {
+      func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+        tableView.reloadData()
+      }
+        
+    // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if selectedRow == -1 {
-            return
+        if selectedRow != -1 {
+            data[selectedRow] = newRowText
+            if newRowText == "" {
+                data.remove(at: selectedRow)
+            }
+            tableView.reloadData()
+            saveNotes()
         }
-        data[selectedRow] = newRowText
-        if newRowText == "" {
-            data.remove(at: selectedRow)
+        setTheme()
+    }
+    // MARK: saveNotes
+    func saveNotes() {
+        let arrayDirectory = NSArray(array: data)
+        do {
+            try arrayDirectory.write(to: fileURL)
+        } catch {
+            print("Error in saveNotes()")
         }
-        tableView.reloadData()
-        saveNotes()
     }
     
-    // ***********
-    
-    // IBAction to call createNewNote method
+    // MARK: Plus Button
     @IBAction func createNewNoteButton(_ sender: UIBarButtonItem) {
-        createNewNote()
-    }
-    
-    // IBAction to call editNote method
-    @IBAction func editNote(_ sender: UIBarButtonItem) {
-        
-    }
-    
-    
-    // method for creating new notes
-    
-    func createNewNote() {
-        
-        if tableView.isEditing {
-            return
-        }
-        
-        let name: String = "" // gives note a string title based on user input
-        data.insert(name, at: 0) // indexes new note at the beginning of the index of "data" array
-        
-        let indexPath: IndexPath = IndexPath(row: 0, section: 0) // creates a new row after adding a new note to array
-         tableView.insertRows(at: [indexPath], with: .automatic) // animates the creation of a new row
-        
-        // identifies selected row when segue is triggered / connected to prepare for segue method
+        if tableView.isEditing { return }
+        let name: String = ""
+        data.insert(name, at: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
         tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-        
         self.performSegue(withIdentifier: "detailNotes", sender: nil)
-        
         tableView.reloadData()
     }
     
-    //numberOfRowsInSection method - how many rows are going to be in the table view?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count // setting number of rows based on the count of elements in the array "data"
+        return data.count
     }
-    
-    //CellForRowAt method - creating cell, applying data from array and returning a UITableView cell based on the index path of the array "data"
-    
-    // add guard let / if let to check and make sure cell is not nil before running code
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath)
-        cell.textLabel?.text = data[indexPath.row] //setting the text for the cell based on the text label property
-//        IndexPath contains the row and the section of the table view whose cell we are creating
+        cell.textLabel?.text = data[indexPath.row]
+        // MARK: Cell Themeing
+        cell.backgroundColor = Theme.current.backgroundColor
+        cell.textLabel?.textColor = Theme.current.fontColor
         return cell
     }
     
-    // when edit button is selected, puts table into editing mode - allows for deletion
+    // MARK: Edit button Functions
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: animated)
     }
-    
-    
-    // deletes rows when in edit mode and updates the "data" array after deletion
-    // also adds animation effect when deleting
+    @IBAction func editNote(_ sender: UIBarButtonItem) {
+        self.navigationItem.leftBarButtonItem = editButtonItem
+    }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         data.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
         tableView.reloadData()
     }
     
-    // uses the delagate to find which row was selected
-    
+    // Segue on row select
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "detailNotes", sender: nil)
-        
     }
     
+    // MARK: prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let detailView: DetailViewController = segue.destination as! DetailViewController
-        selectedRow = tableView.indexPathForSelectedRow!.row // always making sure you have a selected row before transistion to detail view controller screen
-        detailView.masterView = self
-        detailView.setText(t: data[selectedRow]) // sending selected cell text/data to the detail view
-    }
-    
-    // saving the notes using persistence
-    
-    func saveNotes() {
-        
-//        creating NSArray instead of using user defaults
-        let arrayDirectory = NSArray(array: data)
-        do {
-            try arrayDirectory.write(to: fileURL)
-        } catch {
-            print("Error")
+        if segue.identifier == "detailNotes" {
+            let detailView: DetailViewController = segue.destination as! DetailViewController
+            selectedRow = tableView.indexPathForSelectedRow!.row // always making sure you have a selected row before transistion to detail view controller screen
+            detailView.masterView = self
+            detailView.setText(t: data[selectedRow]) // sending selected cell text/data to the detail view
+        } else if segue.identifier == "themeSelection" {
+            
         }
     }
-
-    func loadNotes() {
-        // if the value being created is not "nil" then execute the code inside of the { }
-        // getting value from user defaults and typecasting it as a string array
         
-        if let loadedNotes: [String] = NSArray(contentsOf: fileURL) as? [String] {
-            data = loadedNotes
-            tableView.reloadData()
-        }
+    
+        
+    func setTheme() {
+        self.view.backgroundColor = Theme.current.backgroundColor
+        paintButton.tintColor = Theme.current.buttonColor
+        tableView.backgroundColor = Theme.current.backgroundColor
+        //editButton.tintColor = Theme.current.buttonColor
+        addNote.tintColor = Theme.current.buttonColor
+        toolbar.barTintColor = Theme.current.backgroundColor
+        toolbar.backgroundColor = Theme.current.backgroundColor
+        sortButton.tintColor = Theme.current.buttonColor
+        tableView.reloadData()
         
     }
-    
-    func filterContentForSearchText(_ searchText: String,
-                                    category: Note.Category? = nil) {
-      filteredNotes = notes.filter { (note: Note) -> Bool in
-        return note.name.lowercased().contains(searchText.lowercased())
-      }
-
-      tableView.reloadData()
-    }
-
-}
-
-extension ViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-    // TODO
-  }
-    
-    
-
 }
 
